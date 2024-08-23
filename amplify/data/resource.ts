@@ -19,7 +19,8 @@ const schema = a.schema({
   thermometer: a.query()
     .arguments({ city: a.string() })
     .returns(a.ref('Temperature'))
-    .handler(a.handler.function(thermometer)),
+    .handler(a.handler.function(thermometer))
+    .authorization((allow) => allow.authenticated()),
 
   // Conversation route with a tool definition.
   pirateChat: a.conversation({
